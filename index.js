@@ -51,6 +51,20 @@ const sumWithReduce = array.customReduce((acc, curr) => {
   return acc * curr;
 });
 
+
+// Polyfill for forEach 
+
+// forEach((element) => {})
+
+Array.prototype.customForEach = function(cb) {
+  for(let i=0; i< this.length; i++) {
+    cb(this[i], i, this)
+  }
+}
+array.customForEach((element) => {
+  console.log(element)
+})
+
 console.log(sumWithReduce);
 console.log(subtractBy2);
 console.log(filterEven);
